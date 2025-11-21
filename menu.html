@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Winraz Coffee - Minuman, Makanan & Snack</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+    <style>
+        /* CSS internal tetap sama */
+        .menu-page-header {
+            padding-top: 100px; 
+            text-align: center;
+        }
+        .menu-page-header h1 {
+            font-size: 48px;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        .menu-category {
+            padding: 50px 0;
+        }
+        .menu-category h2 {
+            font-size: 32px;
+            color: var(--text-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            text-align: left;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+        @media (max-width: 768px) {
+            .menu-category h2 {
+                margin-left: 20px;
+                margin-right: 20px;
+                font-size: 28px;
+            }
+        }
+        @media (max-width: 600px) {
+            .menu-category h2 {
+                margin-left: 15px;
+                margin-right: 15px;
+                font-size: 24px;
+                text-align: center; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="index.html" class="logo">winrazcoffee.</a>
+        <nav class="nav-links">
+            <a href="index.html#home">Home</a>
+            <a href="index.html#tentang">Tentang Kami</a>
+            <a href="#">Menu</a>
+            <a href="index.html#kontak">Kontak</a>
+        </nav>
+        <button class="cart-button" onclick="toggleCart()">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-count" class="cart-count">0</span>
+        </button>
+    </header>
+
+    <div id="custom-notification" class="custom-notification">
+        <span id="notification-message"></span>
+    </div>
+
+    <section class="menu-page-header">
+        <h1>Daftar Menu Winraz Coffee</h1>
+        <p>Pilihan kopi, makanan, dan snack yang selalu mengikuti tren terkini.</p>
+    </section>
+
+    <section id="minuman" class="menu-category">
+        <h2>Minuman</h2>
+        <div class="menu-container">
+            <div class="menu-item" data-name="Es Kopi Susu Gula Aren" data-price="20000">
+                <img src="kopi-aren.jpg" alt="Es Kopi Susu Gula Aren">
+                <h3>Es Kopi Susu Gula Aren</h3>
+                <p>Kopi susu klasik dengan manis alami gula aren. Terlaris!</p>
+                <span class="price">Rp 20.000</span>
+                <button class="add-to-cart">Tambah ke Keranjang</button>
+            </div>
+            <div class="menu-item" data-name="Salted Caramel Latte" data-price="28000">
+                <img src="salted-late.jpg" alt="Salted Caramel Latte">
+                <h3>Salted Caramel Latte</h3>
+                <p>Perpaduan manis, gurih, dan espresso premium.</p>
+                <span class="price">Rp 28.000</span>
+                <button class="add-to-cart">Tambah ke Keranjang</button>
+            </div>
+            <div class="menu-item" data-name="Matcha Espresso Fusion" data-price="30000">
+                <img src="matcha.jpg" alt="Matcha Espresso Fusion">
+                <h3>Matcha Espresso Fusion</h3>
+                <p>Lapisan matcha yang tebal dengan shot espresso di atasnya.</p>
+                <span class="price">Rp 30.000</span>
+                <button class="add-to-cart">Tambah ke Keranjang</button>
+            </div>
+            
+            <div class="menu-item" data-name="Americano" data-price="18000">
+                <img src="americano.jpg" alt="Americano">
+                <h3>Americano</h3>
+                <p>Biji kopi pilihan yang diekstrak, disajikan panas atau dingin.</p>
+                <span class="price">Rp 18.000</span>
+                <button class="add-to-cart">Tambah ke Keranjang</button>
+            </div>
+            <div class="menu-item" data-name="Red Velvet Latte" data-price="25000">
+                <img src="red-velvet.jpg" alt="Red Velvet Latte">
+                <h3>Red Velvet Latte</h3>
+                <p>Minuman kaya rasa cokelat dengan warna merah yang khas. Non-kopi.</p>
+                <span class="price">Rp 25.000</span>
+                <button class="add-to-cart">Tambah ke Keranjang</button>
+            </div>
+            <div class="menu-item" data-name="Espresso" data-price="15000">
+                <img src="espresso.jpg" alt="Espresso">
+                <h3>Espresso</h3>
+                <p>Satu shot murni dari ekstraksi biji kopi terbaik.</p>
+                <span class="price">Rp 15.000</span>
+                <button class="add-to-cart">Tambah ke Keranjang</button>
+            </div>
+            </div>
+    </section>
+    
+    <section id="makanan" class="menu-category">
+        <h2>Makanan</h2>
+        <div class="menu-container">
+            <div class="menu-item" data-name="Nasi Ayam Geprek Keju" data-price="35000">
+                <img src="ayam-geprek-keju.jpg" alt="Nasi Ayam Geprek Keju">
+                <h3>Nasi Ayam Geprek Keju</h3>
+                <p>Ayam pedas favorit dengan lelehan keju mozzarella. Cocok untuk kalian yang lapar.</p>
+                <span class="price">Rp 35.000</span>
+                <button class="add-to-cart">Tambah ke Keranjang</button>
+            </div>
+            <div class="menu-item" data-name="Mie Goreng Telur Mata Sapi" data-price="25000">
+                <img src="mie-goreng.jpeg" alt="Mie Goreng Telur Mata Sapi">
+                <h3>Mie Goreng Telur Mata Sapi</h3>
+                <p>Klasik yang selalu lezat, cocok untuk teman ngopi.</p>
+                <span class="price">Rp 25.000</span>
+                <button class="add-to-cart">Tambah ke Keranjang</button>
+            </div>
+
+            <div class="menu-item" data-name="Rice Bowl Daging Blackpepper" data-price="45000">
+                <img src="rice-bowl.jpeg" alt="Rice Bowl Daging Blackpepper">
+                <h3>Rice Bowl Beef Blackpepper</h3>
+                <p>Daging sapi empuk dengan saus lada hitam pedas manis.</p>
+                <span class="price">Rp 45.000</span>
+                <button class="add-to-cart">Tambah ke Keranjang</button>
+            </div>
+
+            </div>
+    </section>
+    
+    <section id="snack" class="menu-category">
+        <h2>Snack & Dessert</h2>
+        <div class="menu-container">
+            <div class="menu-item" data-name="Kentang Goreng Keju" data-price="18000">
+                <img src="kentang-keju.jpg" alt="Kentang Goreng Keju">
+                <h3>Kentang Goreng Keju</h3>
+                <p>Kentang renyah dengan saus keju signature kami.</p>
+                <span class="price">Rp 18.000</span>
+                <button class="add-to-cart">Tambah ke Keranjang</button>
+            </div>
+            <div class="menu-item" data-name="Croissant Almond" data-price="22000">
+                <img src="croissants-almond.jpg" alt="Croissant Almond">
+                <h3>Croissant Almond</h3>
+                <p>Pastry *butter* klasik dengan taburan almond.</p>
+                <span class="price">Rp 22.000</span>
+                <button class="add-to-cart">Tambah ke Keranjang</button>
+            </div>
+
+            <div class="menu-item" data-name="Churros Cinnamon Sugar" data-price="20000">
+                <img src="churros.jpg" alt="Churros Cinnamon Sugar">
+                <h3>Churros Cinnamon Sugar</h3>
+                <p>Camilan Spanyol yang renyah dengan taburan gula kayu manis.</p>
+                <span class="price">Rp 20.000</span>
+                <button class="add-to-cart">Tambah ke Keranjang</button>
+            </div>
+            </div>
+    </section>
+
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="toggleCart()">&times;</span>
+            <h3>🛒 Keranjang Belanja</h3>
+            <div id="cart-items">
+                <p id="empty-cart-message">Keranjang Anda kosong.</p>
+            </div>
+            <p>Total: <span id="cart-total">Rp 0</span></p>
+            <button class="btn" id="checkout-button" disabled onclick="showCheckout()">Lanjutkan ke Pembayaran</button>
+        </div>
+    </div>
+    
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="hideCheckout()">&times;</span>
+            <h3>📝 Detail Pemesanan</h3>
+            
+            <form id="checkout-form">
+                <label for="nama">Nama Lengkap:</label>
+                <input type="text" id="nama" name="nama" required>
+                <label for="nomeja">Nomor Meja:</label>
+                <input type="text" id="nomeja" name="nomeja" required>
+                <button type="submit" class="btn">Proses Pesanan</button>
+            </form>
+            
+            <div id="receipt" class="receipt" style="display:none;">
+                <h4>✅ Struk Pembayaran Winraz Coffee</h4>
+                <p>Tanggal: <span id="receipt-date"></span></p>
+                <p>Nama: <span id="receipt-nama"></span></p>
+                <p>Nomor Meja: <span id="receipt-meja"></span></p>
+                <hr>
+                
+                <h5>Detail Pesanan:</h5>
+                <ul id="receipt-items"></ul>
+                <hr>
+                
+                <p class="receipt-total">TOTAL AKHIR: <span id="receipt-total"></span></p>
+                
+                <div class="qr-dummy">
+                    <img src="qris.png" alt="QRIS Dummy">
+                    <p>Scan QRIS untuk Pembayaran</p>
+                </div>
+                
+                <p class="thanks">Terima kasih telah memesan!</p>
+                <button class="btn download-btn" onclick="downloadReceipt()">Unduh Struk (JPG)</button>
+            </div>
+            
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

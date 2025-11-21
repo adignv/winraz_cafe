@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winraz Coffee - Mari Nikmati Secangkir Kopi</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <a href="#" class="logo">winrazcoffee.</a>
+
+        <button class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <nav class="nav-links" id="nav-links">
+            <a href="#home">Home</a>
+            <a href="#tentang">Tentang Kami</a>
+            <a href="#menu">Menu</a>
+            <a href="#kontak">Kontak</a>
+        </nav>
+
+        <button class="cart-button" onclick="toggleCart()">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-count" class="cart-count">0</span>
+        </button>
+    </header>
+
+    <div id="custom-notification" class="custom-notification">
+        <span id="notification-message"></span>
+    </div>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Mari Nikmati Secangkir <span class="accent-text">Kopi</span></h1>
+            <a href="#menu" class="btn">Lihat Menu</a>
+        </div>
+    </section>
+
+    <section id="tentang" class="about-section">
+        <div class="container">
+            <h2>Tentang Kami</h2>
+            <p class="intro">
+                Didirikan pada 2025, <b>Winraz Coffee</b> lahir dari kecintaan yang mendalam terhadap budaya ngopi santai
+                dan keinginan untuk menghadirkan cita rasa modern. Kami percaya bahwa setiap cangkir adalah pengalaman,
+                bukan sekadar minuman.
+            </p>
+            <div class="values">
+                <h3>Nilai Kami:</h3>
+                <ul>
+                    <li><b>Kualitas Premium:</b> Hanya menggunakan biji kopi terbaik dan bahan-bahan segar.</li>
+                    <li><b>Inovasi Rasa:</b> Menciptakan kombinasi rasa kekinian yang unik, dari klasik hingga fusion.
+                    </li>
+                    <li><b>Kenyamanan:</b> Menyediakan tempat dan suasana yang sempurna untuk bekerja, bersantai, atau
+                        berkumpul.</li>
+                </ul>
+            </div>
+            <p class="tagline">
+                Kunjungi kami dan temukan kopi favorit Anda berikutnya, ditemani snack dan makanan yang pas di lidah.
+            </p>
+        </div>
+    </section>
+
+    <section id="menu" class="menu-section">
+        <h2>Menu Pilihan Kami</h2>
+
+        <div class="menu-container">
+            <div class="menu-item" data-name="Es Kopi Susu Gula Aren" data-price="20000">
+                <img src="kopi-aren.jpg" alt="Es Kopi Susu Gula Aren">
+                <h3>Es Kopi Susu Gula Aren</h3>
+                <p>Kopi susu klasik dengan manis alami gula aren. Terlaris!</p>
+                <span class="price">Rp 20.000</span>
+                <button class="add-to-cart">Tambah ke Keranjang</button>
+            </div>
+            <div class="menu-item" data-name="Nasi Ayam Geprek Keju" data-price="35000">
+                <img src="ayam-geprek-keju.jpg" alt="Nasi Ayam Geprek Keju">
+                <h3>Nasi Ayam Geprek Keju</h3>
+                <p>Ayam pedas favorit dengan lelehan keju mozzarella.</p>
+                <span class="price">Rp 35.000</span>
+                <button class="add-to-cart">Tambah ke Keranjang</button>
+            </div>
+            <div class="menu-item" data-name="Croissant Almond" data-price="22000">
+                <img src="croissants-almond.jpg" alt="Croissant Almond">
+                <h3>Croissant Almond</h3>
+                <p>Pastry butter klasik dengan taburan almond.</p>
+                <span class="price">Rp 22.000</span>
+                <button class="add-to-cart">Tambah ke Keranjang</button>
+            </div>
+
+        </div>
+
+        <div class="center-btn-container">
+            <a href="menu.html" class="btn">Lihat Menu Selengkapnya</a>
+        </div>
+
+    </section>
+
+    <section id="kontak" class="contact-section">
+        <div class="container">
+            <h2>📞 Hubungi Kami & Beri Saran</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Winraz Coffee HQ</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Pamulang NO.25 | Tangerang Selatan - Banten</p>
+                    <p><i class="fas fa-phone"></i> +62 812-3456-7890</p>
+                    <p><i class="fas fa-envelope"></i> halo@winrazcoffee.com</p>
+                    <div class="social-media">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div class="suggestion-form">
+                    <h3>Kirim Kritik & Saran</h3>
+                    <form>
+                        <label for="saran-nama">Nama Anda:</label>
+                        <input type="text" id="saran-nama" name="nama" required>
+
+                        <label for="saran-email">Email:</label>
+                        <input type="email" id="saran-email" name="email" required>
+
+                        <label for="saran-teks">Saran/Masukan:</label>
+                        <textarea id="saran-teks" name="saran" rows="5" required></textarea>
+
+                        <button type="submit" class="btn">Kirim Saran</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="toggleCart()">&times;</span>
+            <h3>🛒 Keranjang Belanja</h3>
+            <div id="cart-items">
+                <p id="empty-cart-message">Keranjang Anda kosong.</p>
+            </div>
+            <p>Total: <span id="cart-total">Rp 0</span></p>
+            <button class="btn" id="checkout-button" disabled onclick="showCheckout()">Lanjutkan ke Pembayaran</button>
+        </div>
+    </div>
+
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="hideCheckout()">&times;</span>
+            <h3>📝 Detail Pemesanan</h3>
+
+            <form id="checkout-form">
+                <label for="nama">Nama Lengkap:</label>
+                <input type="text" id="nama" name="nama" required>
+                <label for="nomeja">Nomor Meja:</label>
+                <input type="text" id="nomeja" name="nomeja" required>
+                <button type="submit" class="btn">Proses Pesanan</button>
+            </form>
+
+            <div id="receipt" class="receipt" style="display:none;">
+                <h4>Struk Pembayaran Winraz Coffee</h4>
+                <p>Tanggal: <span id="receipt-date"></span></p>
+                <p>Nama: <span id="receipt-nama"></span></p>
+                <p>Nomor Meja: <span id="receipt-meja"></span></p>
+                <hr>
+
+                <h5>Detail Pesanan:</h5>
+                <ul id="receipt-items"></ul>
+                <hr>
+
+                <p class="receipt-total">TOTAL AKHIR: <span id="receipt-total"></span></p>
+
+                <div class="qr-dummy">
+                    <img src="qris.png" alt="QRIS Dummy">
+                    <p>Scan QRIS untuk Pembayaran</p>
+                </div>
+
+                <p class="thanks">Terima kasih telah memesan!</p>
+                <button class="btn download-btn" onclick="downloadReceipt()">Unduh Struk (JPG)</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
